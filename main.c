@@ -11,6 +11,7 @@ int main(){
 	char opt;
 
 	do{
+		system("cls");
 		printf("\nMENU PRINCIPAL\n");
 		printf("[1] NOVA OPERACAO\n");
 		printf("[2] OPCOES\n");
@@ -19,6 +20,7 @@ int main(){
 
 		switch(opt){
             case '1':{
+				system("cls");
 				if(treeSize(root) == 0){
 					printf("\n\nATENCAO: NAO NENHUM PRODUTO CADASTRADO, NAO E POSSIVEL REALIZAR VENDAS.\n");
 					printf("PARA CADASTRAR PRODUTOS ACESSE AS OPCOES\n\n");

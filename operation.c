@@ -15,5 +15,9 @@ void newOp(Tree* root){
         guide = insertListNode(guide, i, getName(root, i), getPrice(root, i), 0);
     }
     printList(guide);
+    alfaSort(guide);
+    printf("\n\n======\n\n");
+    printList(guide);
     deleteList(guide, root);
+    getch();
 }

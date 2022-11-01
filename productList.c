@@ -17,6 +17,8 @@ List* insertListNode(List* list, int key, char name[], float price, float qtt){
         list = (List*) malloc(sizeof(List));
         list->key = key;
         strcpy(list->name, name);
+        while(strlen(list->name) < 24)
+            strcat(list->name, "-");
         list->price = price;
         list->qtt = qtt;
         list->total = price * qtt;
@@ -51,7 +53,12 @@ List* deleteListNode(List* list, int key){
 }
 void printList(List* list){
     if(list){
-        printf("\n[%2i] %.8s %.2f %.3f %.2f\n", list->key, list->name, list->price, list->qtt, list->total);
+        int i;
+        printf("\n%.4i  %s R$%3.2f %.3f R$%2.2f", list->key, list->name, list->price, list->qtt, list->total);
+
+        printf("\n      ");
+        for(i = 0; i < 43; i++)
+            printf("-");       
         printList(list->next);
     }
 }
@@ -62,5 +69,39 @@ void deleteList(List* list, Tree* root){
     for(i = 1; i <= n; i++){
         if(findKey(root, i) == 1)
             list = deleteListNode(list, i);
+    }
+}
+int listSize(List* list){
+    if(list)
+        return 1 + listSize(list->next);
+    return 0;     
+}
+void alfaSort(List* list){
+    List* aux = list;
+    List* iter;
+    char nameAux[25];
+    float priceAux;
+    int keyAux;
+
+    while(aux->next){
+        iter = aux->next;
+        while(iter){
+            if(strcmp(aux->name, iter->name) > 0){
+               
+                strcpy(nameAux, aux->name);
+                strcpy(aux->name, iter->name);
+                strcpy(iter->name, nameAux);
+
+                keyAux = aux->key;
+                aux->key = iter->key;
+                iter->key = keyAux;
+
+                priceAux = aux->price;
+                aux->price = iter->price;
+                iter->price = priceAux;
+            }
+            iter = iter->next;
+        }
+        aux = aux->next;
     }
 }

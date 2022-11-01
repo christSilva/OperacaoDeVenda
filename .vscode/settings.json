@@ -6,6 +6,10 @@
         "istream": "c",
         "streambuf": "c",
         "operation.h": "c",
-        "productlist.h": "c"
+        "productlist.h": "c",
+        "array": "c",
+        "initializer_list": "c",
+        "utility": "c",
+        "stdlib.h": "c"
     }
 }
