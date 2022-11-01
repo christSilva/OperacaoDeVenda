@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.tcc": "c",
+        "functional": "c",
+        "fstream": "c",
+        "istream": "c",
+        "streambuf": "c",
+        "operation.h": "c",
+        "productlist.h": "c"
+    }
+}

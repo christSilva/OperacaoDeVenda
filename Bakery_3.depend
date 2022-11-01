@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1667170165 source:c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tree.h"
+	"options.h"
+	"operation.h"
+	"productList.h"
+
+1667169235 c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\tree.h
+	"productList.h"
+
+1667154420 c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\options.h
+	"tree.h"
+
+1667159184 source:c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\options.c
+	<stdio.h>
+	<stdlib.h>
+	"options.h"
+	"tree.h"
+
+1667169207 source:c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\tree.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"tree.h"
+	"productList.h"
+
+1667169256 source:c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\operation.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"tree.h"
+	"productList.h"
+
+1667158482 c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\productlist.h
+
+1667159351 source:c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\productlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"tree.h"
+	"productList.h"
+
+1666886206 source:c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\venda.c
+
+1667154420 c:\users\chris\desktop\c\3 semestre\aed i\bk3\bakery_3\operation.h
+	"tree.h"
+	"productList.h"
+
