@@ -242,7 +242,7 @@ void printTree(Tree* root, int tabs){
 		printf("|%i\n", root->key);
 		for(i = 0; i < tabs; i++)
 			printf("\t");
-		printf("|%s\n", root->name);
+		printf("|%.8s\n", root->name);
 		for(i = 0; i < tabs; i++)
 			printf("\t");
 		printf("|R$ %.2f\n", root->price);

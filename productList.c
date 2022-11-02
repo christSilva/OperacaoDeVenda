@@ -56,19 +56,51 @@ void printList(List* list){
         int i;
         printf("\n%.4i  %s R$%3.2f %.3f R$%2.2f", list->key, list->name, list->price, list->qtt, list->total);
 
-        printf("\n      ");
-        for(i = 0; i < 43; i++)
-            printf("-");       
+        // printf("\n      ");
+        // for(i = 0; i < 24; i++)
+        //     printf("-");       
         printList(list->next);
     }
 }
-void deleteList(List* list, Tree* root){
-    int i;
-    int n = biggest(root);
+int printByPages(List* list, int page, char side){
+    //ocultar guia
+    if(side == 'o'){
+        return page;
+    }else{
+        int i;
+        int size = listSize(list);
+        int lastPage = size/10;
+        List* printer = list;
 
-    for(i = 1; i <= n; i++){
-        if(findKey(root, i) == 1)
-            list = deleteListNode(list, i);
+        if(side == 'l'){
+            if(page > 0)
+                page--;
+        }else{
+            if(page < lastPage)
+                page++;
+        }
+        printf("PAGINA %i DE %i", page + 1, lastPage + 1);
+        printf("\n[Q][E] PARA NAVEGAR ENTRE AS PAGINAS");
+        printf("\n\nCOD   NOME                     PRECO\n");
+        for(i = 0; i < page * 10; i++)
+            printer = printer->next;
+
+        for(i = 0; i < 10; i++){
+            if(!printer)
+                break;
+            printf("\n%.4i  %s R$%3.2f", printer->key, printer->name, printer->price);
+            printer = printer->next;
+        }
+
+        return page;
+    }
+}
+void deleteList(List* list){
+    List* aux = list;
+    while(list){
+        aux = list;
+        list = list->next;
+        free(aux);
     }
 }
 int listSize(List* list){
@@ -104,4 +136,8 @@ void alfaSort(List* list){
         }
         aux = aux->next;
     }
+}
+float totalToPay(List* list){
+    if(list)
+        return list->total + totalToPay(list->next);
 }

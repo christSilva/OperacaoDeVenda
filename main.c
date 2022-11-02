@@ -12,7 +12,7 @@ int main(){
 
 	do{
 		system("cls");
-		printf("\nMENU PRINCIPAL\n");
+		printf("MENU PRINCIPAL\n\n");
 		printf("[1] NOVA OPERACAO\n");
 		printf("[2] OPCOES\n");
 		printf("[0] SAIR");
@@ -35,7 +35,6 @@ int main(){
 			}
 			case '0':{
 				deleteTree(root);
-				printf("----------");
 			    break;
 			}
             default:{
