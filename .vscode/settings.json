@@ -10,6 +10,7 @@
         "array": "c",
         "initializer_list": "c",
         "utility": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "curses.h": "c"
     }
 }

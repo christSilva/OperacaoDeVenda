@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <curses.h>
 #include "tree.h"
 #include "options.h"
 #include "operation.h"
@@ -11,16 +12,19 @@ int main(){
 	char opt;
 
 	do{
-		system("cls");
+		//system("cls");
 		printf("MENU PRINCIPAL\n\n");
 		printf("[1] NOVA OPERACAO\n");
 		printf("[2] OPCOES\n");
 		printf("[0] SAIR");
-		opt = getch();
+		//getc(stdin);
+		//__fpurge(stdin);
+		opt = getchar();
+
 
 		switch(opt){
             case '1':{
-				system("cls");
+				//system("cls");
 				if(treeSize(root) == 0){
 					printf("\n\nATENCAO: NAO NENHUM PRODUTO CADASTRADO, NAO E POSSIVEL REALIZAR VENDAS.\n");
 					printf("PARA CADASTRAR PRODUTOS ACESSE AS OPCOES\n\n");

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <curses.h>
 #include "tree.h"
 #include "productList.h"
 
@@ -24,7 +25,7 @@ void newOp(Tree* root){
     }
     alfaSort(guide);
     do{
-        system("cls");
+        //system("cls");
         page = printByPages(guide, page, pageMove);
         printf("\n\nCOD   NOME                     PRECO  QTD  TOTAL\n");
         printList(products);
@@ -32,8 +33,9 @@ void newOp(Tree* root){
         printf("\n[D] EXCLUIR PRODUTO");
         printf("\n[F] FINALIZAR OPERACAO");
         printf("\n[O] OCULTAR/MOSTRAR GUIA\n");
-        
-        opt = getch();
+        getc(stdin);
+        //__fpurge(stdin);
+        opt = getchar();
         charUpperCase(&opt);
 
         switch(opt){
@@ -96,5 +98,4 @@ void newOp(Tree* root){
     }while(opt != 'F');
     deleteList(guide);
     deleteList(products);
-    getch();
 }

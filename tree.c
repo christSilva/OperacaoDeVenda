@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <curses.h>
 #include <string.h>
 #include "tree.h"
 
@@ -73,7 +74,8 @@ Tree* editTree(Tree* root, int key){
 			printf("[1] EDITAR NOME\n");
 			printf("[2] EDITAR PRECO\n");
 			printf("[3] EDITAR AMBOS\n");
-			opt = getch();
+			//getc(stdin);
+			opt = getchar();
 
 			switch(opt){
 				case '1':{
