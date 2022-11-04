@@ -9,16 +9,16 @@ Tree* options(Tree* root){
 	int key;
 
 	do{
-		//system("cls");
+		system("clear");
 		printf("OPCOES\n\n");
 		printf("[1] INSERIR PRODUTO\n");
 		printf("[2] EXCLUIR PRODUTO\n");
 		printf("[3] EDITAR DADOS DE UM PRODUTO\n");
 		printf("[0] VOLTAR\n");
 		printf("\n\n\n\n\n\n[4] OPCOES PARA DESENVOLVEDORES\n");
-		//getc(stdin);
+		
 		opt = getchar();
-		//system("cls");
+		system("clear");
 		switch(opt){
 			case '1':{
 				printf("INSERIR PRODUTO\n\n");
@@ -89,9 +89,8 @@ void save(Tree* root){
 	fclose(file);
 }
 void devOptions(Tree* root){
-	char opt;
 
-	printf("INFORMACOES PARA DESENVOLVEDORES\n\n");
+	printf("INFORMACOES PARA DESENVOLVEDORES\n\n\n");
 	printf("QUANTIDADE DE ELEMENTOS DA ARVORE: %i\n\n", treeSize(root));
 	printf("ALTURA DA ARVORE: %i\n\n", treeHeight(root));
 	printf("ELEMENTOS EM ORDEM CRESCENTE:\n\n");
@@ -102,8 +101,8 @@ void devOptions(Tree* root){
 	printf("os elementos da parte superior sao os maiores, assim\n");
 	printf("como os elementos da parte inferior sao os menores\n");
 	printf("\n\nPRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU ANTERIOR...");
-	getc(stdin);
-	//__fpurge(stdin);
+
 	getchar();
+	getc(stdin);
 }
 

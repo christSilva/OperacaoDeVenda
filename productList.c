@@ -54,11 +54,15 @@ List* deleteListNode(List* list, int key){
 void printList(List* list){
     if(list){
         int i;
-        printf("\n%.4i  %s R$%3.2f %.3f R$%2.2f", list->key, list->name, list->price, list->qtt, list->total);
-
-        // printf("\n      ");
-        // for(i = 0; i < 24; i++)
-        //     printf("-");       
+        
+        printf("\n%.4i  %s R$%2.2f", list->key, list->name, list->price);
+        if(list->price < 10)
+            printf(" ");
+        printf("   %.3f", list->qtt);
+        if(list->qtt < 10)
+            printf(" ");
+        printf("  R$%.2f", list->total);
+           
         printList(list->next);
     }
 }
@@ -68,8 +72,7 @@ int printByPages(List* list, int page, char side){
         return page;
     }else{
         int i;
-        int size = listSize(list);
-        int lastPage = size/10;
+        int lastPage = listSize(list)/10;
         List* printer = list;
 
         if(side == 'l'){
@@ -81,7 +84,7 @@ int printByPages(List* list, int page, char side){
         }
         printf("PAGINA %i DE %i", page + 1, lastPage + 1);
         printf("\n[Q][E] PARA NAVEGAR ENTRE AS PAGINAS");
-        printf("\n\nCOD   NOME                     PRECO\n");
+        printf("\n\nCOD   NOME                     KG/UN\n");
         for(i = 0; i < page * 10; i++)
             printer = printer->next;
 
@@ -91,6 +94,9 @@ int printByPages(List* list, int page, char side){
             printf("\n%.4i  %s R$%3.2f", printer->key, printer->name, printer->price);
             printer = printer->next;
         }
+        printf("\n");
+        for(i = 0; i < 37; i++)
+            printf("_");
 
         return page;
     }
@@ -140,4 +146,5 @@ void alfaSort(List* list){
 float totalToPay(List* list){
     if(list)
         return list->total + totalToPay(list->next);
+    return 0;
 }

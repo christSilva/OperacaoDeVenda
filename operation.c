@@ -17,7 +17,7 @@ void newOp(Tree* root){
     int page = 0;
     float qtt;
     char opt;
-    char pageMove = 'o';
+    char pageMove = 'l';
 
     for(i = 1; i <= biggest(root); i++){
         if(findKey(root, i) == 1)
@@ -25,26 +25,26 @@ void newOp(Tree* root){
     }
     alfaSort(guide);
     do{
-        //system("cls");
+        system("clear");
         page = printByPages(guide, page, pageMove);
-        printf("\n\nCOD   NOME                     PRECO  QTD  TOTAL\n");
+        printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
         printList(products);
         printf("\n\n\n[A] INSERIR PRODUTO");
         printf("\n[D] EXCLUIR PRODUTO");
         printf("\n[F] FINALIZAR OPERACAO");
         printf("\n[O] OCULTAR/MOSTRAR GUIA\n");
-        getc(stdin);
-        //__fpurge(stdin);
+
         opt = getchar();
         charUpperCase(&opt);
+        //getc(stdin);
 
         switch(opt){
             case 'A':{
-                printf("\nCODIGO DO PRODUTO: ");
+                printf("\nCOD.: ");
                 scanf("%i", &key);
                 fflush(stdin);
                 if(findKey(root, key) == 1){
-                    printf("\nQUANTIDADE (UTILIZE '.' PARA A PARTE DECIMAL): ");
+                    printf("\nQTD/UN (UTILIZE '.' PARA A PARTE DECIMAL): ");
                     scanf("%f", &qtt);
                     fflush(stdin);
                     products = insertListNode(products, key, getName(root, key), getPrice(root, key), qtt);
@@ -68,9 +68,14 @@ void newOp(Tree* root){
             }
             case 'F':{
                 if(products){
-                    printf("\n\nCOD   NOME                     PRECO  QTD  TOTAL\n");
+                    system("clear");
+                    printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
                     printList(products);
-                    printf("\n\nTOTAL A PAGAR                              R$%.2f\n", totalToPay(products));
+                    printf("\n__________________________________________________________");
+                    printf("\n\nTOTAL A PAGAR                                    R$%.2f\n", totalToPay(products));
+                    printf("\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR...");
+                    getc(stdin);
+                    getchar();
                 }
                 break;
             }

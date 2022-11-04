@@ -74,7 +74,6 @@ Tree* editTree(Tree* root, int key){
 			printf("[1] EDITAR NOME\n");
 			printf("[2] EDITAR PRECO\n");
 			printf("[3] EDITAR AMBOS\n");
-			//getc(stdin);
 			opt = getchar();
 
 			switch(opt){
@@ -103,6 +102,7 @@ Tree* editTree(Tree* root, int key){
 					break;
 				}
 			}
+			//getc(stdin);
 		}while(opt < '0' || opt > '3');
 	}else{
 		if(root->key > key)
