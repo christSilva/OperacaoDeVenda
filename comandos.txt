@@ -1,0 +1,1 @@
+$ gcc -c main.c -o main.o; gcc -c libs//tree.c -o libs//tree.o; gcc -c libs//productList.c -o libs//productList.o; gcc -c libs//operation.c -o libs//operation.o; gcc -c libs//options.c -o libs//options.o;gcc main.o libs//tree.o libs//productList.o libs//options.o libs//operation.o -o output

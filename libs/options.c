@@ -19,9 +19,10 @@ Tree* options(Tree* root){
 		printf("\n\n\n\n\n\n[4] OPCOES PARA DESENVOLVEDORES\n");
 		
 		opt = getchar();
-		system("clear");
+
 		switch(opt){
 			case '1':{
+				system("clear");
 				printf("INSERIR PRODUTO\n\n");
 				//verifica se a �rvore esta vazia
 				if(treeSize(root) == 0)
@@ -30,14 +31,13 @@ Tree* options(Tree* root){
 					root = insertTreeNode(root, biggest(root) + 1);
 				}
 				save(root);
-				printf("OPERACAO REALIZADA COM SUCESSO!");
-				sleep(2);
 				break;
 			}
 			case '2':{
+				system("clear");
 				printf("EXCLUIR PRODUTO\n\n");
 				printSorted(root);
-				printf("INFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
+				printf("\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
 				getc(stdin);
 
@@ -46,14 +46,14 @@ Tree* options(Tree* root){
 				else{
 					root = deleteTreeNode(root, key);
 					save(root);
-					printf("OPERACAO REALIZADA COM SUCESSO!");
-					sleep(2);
 					break;
 				}
 			}
 			case '3':{
+				system("clear");
 				printf("EDITAR PRODUTO\n\n");
-				printf("INFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
+				printSorted(root);
+				printf("\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
 				getc(stdin);
 
@@ -64,20 +64,24 @@ Tree* options(Tree* root){
 					save(root);
 					break;
 				}
-				printf("OPERACAO REALIZADA COM SUCESSO!");
-				sleep(2);
 				break;
 			}
 			case '4':{
+				system("clear");
 				devOptions(root);
 				break;
 			}
 			default:{
-				printf("\n\nOPCAO INVALIDA\n\n");
-				sleep(2);	
+				if(opt != '0'){
+					printf("\n\nOPCAO INVALIDA\n\n");
+					sleep(2);	
+				}
 				break;
 			}
 		}
+		if(opt != '0')
+			getc(stdin);
+			
 	}while(opt != '0');
 return root;
 }
@@ -87,6 +91,8 @@ void save(Tree* root){
 	if(file){
 		saveData(root, file);
 		fprintf(file, "-1");
+		printf("OPERACAO REALIZADA COM SUCESSO!");
+		sleep(2);
 	}
 	else{
 		printf("\nERRO AO SALVAR ARQUIVO");
@@ -106,9 +112,8 @@ void devOptions(Tree* root){
 	printf("\n\nOBS.: a arvore esta rotacionada para a esquerda. Logo, \n");
 	printf("os elementos da parte superior sao os maiores, assim\n");
 	printf("como os elementos da parte inferior sao os menores\n");
-	printf("\n\nPRESSIONE QUALQUER TECLA PARA VOLTAR AO MENU ANTERIOR...");
+	printf("\n\nPRESSIONE ENTER PARA VOLTAR AO MENU ANTERIOR...");
 
-	getchar();
 	getc(stdin);
 }
 

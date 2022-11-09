@@ -25,6 +25,7 @@ void newOp(Tree* root){
     }
     alfaSort(guide);
     do{
+        getc(stdin);
         system("clear");
         page = printByPages(guide, page, pageMove);
         printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
@@ -43,7 +44,7 @@ void newOp(Tree* root){
                 scanf("%i", &key);
                 getc(stdin);
                 if(findKey(root, key) == 1){
-                    printf("\nQTD/UN (UTILIZE '.' PARA A PARTE DECIMAL): ");
+                    printf("\nKG/UN (UTILIZE '.' PARA A PARTE DECIMAL): ");
                     scanf("%f", &qtt);
                     getc(stdin);
                     products = insertListNode(products, key, getName(root, key), getPrice(root, key), qtt);
@@ -97,7 +98,7 @@ void newOp(Tree* root){
                 break;
             }
             default:{
-                printf("OPCAO INVALIDA!\n");
+                printf("%c \n\nOPCAO INVALIDA!\n", opt);
                 sleep(2);
                 break;
             }

@@ -33,11 +33,11 @@ Tree* fillTree(Tree* node, int key){
 	node->left = NULL;
 	node->right = NULL;
 
-	printf("DIGITE O NOME DO PRODUTO: ");
+	printf("\nDIGITE O NOME DO PRODUTO: ");
 		scanf("%24[^\n]", node->name);
 		//getc(stdin);
 		upperCase(node->name);
-	printf("DIGITE O PRECO R$ ");
+	printf("DIGITE O PRECO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
 		scanf("%f", &node->price);
 		getc(stdin);
 	return node;
@@ -59,26 +59,29 @@ Tree* editTree(Tree* root, int key){
 	}else if(root->key == key){
 		char opt;
 		do{
+			printf("\n    %s\n\n", root->name);
 			printf("[1] EDITAR NOME\n");
 			printf("[2] EDITAR PRECO\n");
 			printf("[3] EDITAR AMBOS\n");
 			opt = getchar();
-
+			getc(stdin);
 			switch(opt){
 				case '1':{
-					printf("DIGITE O NOVO NOME: ");
+					printf("\nDIGITE O NOVO NOME: ");
 					scanf("%24[^\n]", root->name);
+					upperCase(root->name);
 					break;
 				}
 				case '2':{
-					printf("DIGITE O NOVO PRECO R$ ");
+					printf("\nDIGITE O NOVO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
 					scanf("%f", &root->price);
 					break;
 				}
 				case '3':{
-					printf("DIGITE O NOVO NOME: ");
+					printf("\nDIGITE O NOVO NOME: ");
 					scanf("%24[^\n]", root->name);
-					printf("DIGITE O NOVO PRECO: R$ ");
+					upperCase(root->name);
+					printf("\nDIGITE O NOVO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
 					scanf("%f", &root->price);
 					break;
 				}
@@ -91,13 +94,13 @@ Tree* editTree(Tree* root, int key){
 					break;
 				}
 			}
-			//getc(stdin);
+			
 		}while(opt < '0' || opt > '3');
 	}else{
 		if(root->key > key)
-			root = editTree(root->left, key);
+			root->left = editTree(root->left, key);
 		else
-			root = editTree(root->right, key);
+			root->right = editTree(root->right, key);
 	}
 	return root;
 }
@@ -273,14 +276,16 @@ Tree* loadTree(Tree* root){
 		printf("INSIRA PRODUTOS ACESSANDO AS OPCOES\n\n");
 		fclose(file);
 		return NULL;
+	}else{
+		do{
+			fscanf(file, "%i\n", &key);
+			root = loadNode(root, file, key);
+		}while(key != -1);
+		
+		fclose(file);
+		root = deleteTreeNode(root, -1);
+		return root;
 	}
-	do{
-		fscanf(file, "%i\n", &key);
-		root = loadNode(root, file, key);
-	}while(key != -1);
-	fclose(file);
-	root = deleteTreeNode(root, -1);
-	return root;
 }
 Tree* loadNode(Tree* root, FILE* file, int key){
 	//achou a posi��o correta
