@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <ncurses.h>
+//#include <ncurses.h>
+#include <unistd.h>
 #include "tree.h"
 #include "options.h"
 #include "operation.h"
@@ -32,6 +33,7 @@ int main(){
 				break;
 			}
 			case '2':{
+				getc(stdin);
 				root = options(root);
 				break;
 			}
@@ -41,6 +43,7 @@ int main(){
 			}
             default:{
                 printf("\nOPCAO INVALIDA\n");
+				sleep(2);			
 				break;
 			}
 		}

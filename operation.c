@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <curses.h>
+#include <unistd.h>
 #include "tree.h"
 #include "productList.h"
 
@@ -36,20 +36,20 @@ void newOp(Tree* root){
 
         opt = getchar();
         charUpperCase(&opt);
-        //getc(stdin);
 
         switch(opt){
             case 'A':{
                 printf("\nCOD.: ");
                 scanf("%i", &key);
-                fflush(stdin);
+                getc(stdin);
                 if(findKey(root, key) == 1){
                     printf("\nQTD/UN (UTILIZE '.' PARA A PARTE DECIMAL): ");
                     scanf("%f", &qtt);
-                    fflush(stdin);
+                    getc(stdin);
                     products = insertListNode(products, key, getName(root, key), getPrice(root, key), qtt);
                 }else{
                     printf("\nCODIGO INVALIDO\n");
+                    sleep(2);
                 }
                 break;
             }
@@ -57,18 +57,19 @@ void newOp(Tree* root){
                 if(products){
                     printf("\nCODIGO DO PRODUTO: ");
                     scanf("%i", &key);
-                    fflush(stdin);
+                    getc(stdin);
                     
                     if(findKey(root, key) == 1)
                         products = deleteListNode(products, key);
                     else
                         printf("\nCODIGO INVALIDO\n");
+                        sleep(2);
                 }
                 break;
             }
             case 'F':{
                 if(products){
-                    system("clear");
+                    //system("clear");
                     printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
                     printList(products);
                     printf("\n__________________________________________________________");
@@ -97,6 +98,7 @@ void newOp(Tree* root){
             }
             default:{
                 printf("OPCAO INVALIDA!\n");
+                sleep(2);
                 break;
             }
         }

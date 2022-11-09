@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <unistd.h>
+#include <ncurses.h>
 #include "options.h"
 #include "tree.h"
 
@@ -30,6 +31,7 @@ Tree* options(Tree* root){
 				}
 				save(root);
 				printf("OPERACAO REALIZADA COM SUCESSO!");
+				sleep(2);
 				break;
 			}
 			case '2':{
@@ -37,22 +39,23 @@ Tree* options(Tree* root){
 				printSorted(root);
 				printf("INFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
-				fflush(stdin);
+				getc(stdin);
 
 				if(key == 0)
 					break;
 				else{
 					root = deleteTreeNode(root, key);
 					save(root);
+					printf("OPERACAO REALIZADA COM SUCESSO!");
+					sleep(2);
 					break;
 				}
-				printf("OPERACAO REALIZADA COM SUCESSO!");
 			}
 			case '3':{
 				printf("EDITAR PRODUTO\n\n");
 				printf("INFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
-				fflush(stdin);
+				getc(stdin);
 
 				if(key == 0)
 					break;
@@ -62,6 +65,7 @@ Tree* options(Tree* root){
 					break;
 				}
 				printf("OPERACAO REALIZADA COM SUCESSO!");
+				sleep(2);
 				break;
 			}
 			case '4':{
@@ -70,6 +74,7 @@ Tree* options(Tree* root){
 			}
 			default:{
 				printf("\n\nOPCAO INVALIDA\n\n");
+				sleep(2);	
 				break;
 			}
 		}
@@ -85,6 +90,7 @@ void save(Tree* root){
 	}
 	else{
 		printf("\nERRO AO SALVAR ARQUIVO");
+		sleep(2);
 	}
 	fclose(file);
 }

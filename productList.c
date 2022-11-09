@@ -68,12 +68,12 @@ void printList(List* list){
 }
 int printByPages(List* list, int page, char side){
     //ocultar guia
-    if(side == 'o'){
+    if(side == 'o')
         return page;
-    }else{
+    else{
         int i;
-        int lastPage = listSize(list)/10;
         List* printer = list;
+            int lastPage = listSize(list)/10;
 
         if(side == 'l'){
             if(page > 0)
@@ -82,17 +82,22 @@ int printByPages(List* list, int page, char side){
             if(page < lastPage)
                 page++;
         }
-        printf("PAGINA %i DE %i", page + 1, lastPage + 1);
+        if(listSize(list)%10 == 0)
+            printf("PAGINA %i DE %i", page + 1, lastPage);
+        else
+            printf("PAGINA %i DE %i", page + 1, lastPage + 1);
         printf("\n[Q][E] PARA NAVEGAR ENTRE AS PAGINAS");
         printf("\n\nCOD   NOME                     KG/UN\n");
         for(i = 0; i < page * 10; i++)
             printer = printer->next;
 
         for(i = 0; i < 10; i++){
-            if(!printer)
-                break;
-            printf("\n%.4i  %s R$%3.2f", printer->key, printer->name, printer->price);
-            printer = printer->next;
+            if(!printer){
+               printf("\n");
+            }else{
+                printf("\n%.4i  %s R$%3.2f", printer->key, printer->name, printer->price);
+                printer = printer->next;
+            }
         }
         printf("\n");
         for(i = 0; i < 37; i++)

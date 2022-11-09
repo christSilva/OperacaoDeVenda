@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <curses.h>
 #include <string.h>
+#include <unistd.h>
 #include "tree.h"
 
 struct Tree{
@@ -14,19 +14,6 @@ struct Tree{
 Tree* insertTreeNode(Tree* root, int key){
 	//achou a posi��o correta
 	if(!root){
-	/*	root = (Tree*) malloc(sizeof(Tree));
-		root->key = key;
-		root->left = NULL;
-		root->right = NULL;
-
-		printf("DIGITE O NOME DO PRODUTO: ");
-			scanf("%24[^\n]", root->name);
-			fflush(stdin);
-			upperCase(root->name);
-		printf("DIGITE O PRE�O R$ ");
-			scanf("%f", &root->price);
-			fflush(stdin);
-	*/
 		root = fillTree(root, key);
 	}
 	//novo n� � menor que o n� atual
@@ -48,11 +35,11 @@ Tree* fillTree(Tree* node, int key){
 
 	printf("DIGITE O NOME DO PRODUTO: ");
 		scanf("%24[^\n]", node->name);
-		fflush(stdin);
+		//getc(stdin);
 		upperCase(node->name);
 	printf("DIGITE O PRECO R$ ");
 		scanf("%f", &node->price);
-		fflush(stdin);
+		getc(stdin);
 	return node;
 }
 void upperCase(char name[]){
@@ -67,6 +54,7 @@ void upperCase(char name[]){
 Tree* editTree(Tree* root, int key){
 	if(!root){
 		printf("PRODUTO NAO ENCONTRADO!\n");
+		sleep(2);
 		return NULL;
 	}else if(root->key == key){
 		char opt;
@@ -99,6 +87,7 @@ Tree* editTree(Tree* root, int key){
 				}
 				default:{
 					printf("OPCAO INVALIDA!");
+					sleep(2);
 					break;
 				}
 			}
@@ -115,6 +104,7 @@ Tree* editTree(Tree* root, int key){
 Tree* deleteTreeNode(Tree* root, int key){
 	if(!root){
 		printf("\nPRODUTO NAO ENCONTRADO!\n");
+		sleep(2);
 		return NULL;
 	}
 	//achou
