@@ -21,7 +21,7 @@ int main(){
 		switch(opt){
             case '1':{
 				getc(stdin);
-				if(treeSize(root) == 0){
+				if(!root || treeSize(root) == 0){
 					printf("\n\nATENCAO: NAO NENHUM PRODUTO CADASTRADO, NAO E POSSIVEL REALIZAR VENDAS.\n");
 					printf("PARA CADASTRAR PRODUTOS ACESSE AS OPCOES\n\n");
 				}else{

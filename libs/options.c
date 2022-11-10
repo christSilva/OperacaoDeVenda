@@ -24,7 +24,7 @@ Tree* options(Tree* root){
 				getc(stdin);
 				system("clear");
 				printf("INSERIR PRODUTO");
-				printf("\n\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
+				printf("\n\nDIGITE [0] PARA CANCELAR OU [1] PARA CONTINUAR");
 				scanf("%i", &key);
 				getc(stdin);
 
@@ -32,7 +32,7 @@ Tree* options(Tree* root){
 					break;
 				else{
 					//verifica se a �rvore esta vazia
-					if(treeSize(root) == 0)
+					if(!root || treeSize(root) == 0)
 						root = insertTreeNode(root, 1);
 					else{
 						root = insertTreeNode(root, biggest(root) + 1);
@@ -97,7 +97,7 @@ Tree* options(Tree* root){
 return root;
 }
 void save(Tree* root){
-	FILE* file = fopen("products.txt", "w");
+	FILE* file = fopen("data//products.txt", "w");
 
 	if(file){
 		saveData(root, file);

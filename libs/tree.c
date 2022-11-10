@@ -273,19 +273,23 @@ void saveData(Tree* root, FILE* file){
 }
 Tree* loadTree(Tree* root){
 	int key;
-	FILE* file = fopen("products.txt", "r");
-
+	FILE* file = fopen("data//products.txt", "r");
 	if(!file){
-		printf("ERRO AO CARREGAR DADOS OU NAO HA DADOS ARMAZENADOS.\n");
-		printf("INSIRA PRODUTOS ACESSANDO AS OPCOES\n\n");
+		//o arquivo não existe
 		fclose(file);
-		return NULL;
+		printf("111");
+		//tentando escrever um novo arquivo
+		file = fopen("data//products.txt", "w");
+		if(!file){
+			printf("ERRO AO CARREGAR DADOS\n");
+			fclose(file);
+			return NULL;
+		}
 	}else{
 		do{
 			fscanf(file, "%i\n", &key);
 			root = loadNode(root, file, key);
-		}while(key != -1);
-		
+		}while(key != EOF);
 		fclose(file);
 		root = deleteTreeNode(root, -1);
 		return root;
