@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <ncurses.h>
 #include "options.h"
 #include "tree.h"
 
@@ -22,22 +21,33 @@ Tree* options(Tree* root){
 
 		switch(opt){
 			case '1':{
+				getc(stdin);
 				system("clear");
-				printf("INSERIR PRODUTO\n\n");
-				//verifica se a �rvore esta vazia
-				if(treeSize(root) == 0)
-					root = insertTreeNode(root, 1);
+				printf("INSERIR PRODUTO");
+				printf("\n\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
+				scanf("%i", &key);
+				getc(stdin);
+
+				if(key == 0)
+					break;
 				else{
-					root = insertTreeNode(root, biggest(root) + 1);
+					//verifica se a �rvore esta vazia
+					if(treeSize(root) == 0)
+						root = insertTreeNode(root, 1);
+					else{
+						root = insertTreeNode(root, biggest(root) + 1);
+					}
+					save(root);
+					break;
 				}
-				save(root);
-				break;
 			}
 			case '2':{
+				getc(stdin);
 				system("clear");
-				printf("EXCLUIR PRODUTO\n\n");
+				printf("EXCLUIR PRODUTO");
+				printf("\n\nCOD   NOME                     KG/UN\n");
 				printSorted(root);
-				printf("\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
+				printf("\n\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
 				getc(stdin);
 
@@ -50,10 +60,12 @@ Tree* options(Tree* root){
 				}
 			}
 			case '3':{
+				getc(stdin);
 				system("clear");
-				printf("EDITAR PRODUTO\n\n");
+				printf("EDITAR PRODUTO");
+				printf("\n\nCOD   NOME                     KG/UN\n");
 				printSorted(root);
-				printf("\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
+				printf("\n\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
 				getc(stdin);
 
@@ -64,7 +76,6 @@ Tree* options(Tree* root){
 					save(root);
 					break;
 				}
-				break;
 			}
 			case '4':{
 				system("clear");
@@ -92,11 +103,9 @@ void save(Tree* root){
 		saveData(root, file);
 		fprintf(file, "-1");
 		printf("OPERACAO REALIZADA COM SUCESSO!");
-		sleep(2);
 	}
 	else{
 		printf("\nERRO AO SALVAR ARQUIVO");
-		sleep(2);
 	}
 	fclose(file);
 }

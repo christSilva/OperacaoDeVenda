@@ -247,7 +247,11 @@ void printTree(Tree* root, int tabs){
 void printSorted(Tree* root){
 	if(root){
 		printSorted(root->left);
-		printf("[%2i] %s\n", root->key, root->name);
+		//printf("[%2i] %s\n", root->key, root->name);
+		printf("\n%.4i  %s", root->key, root->name);
+		for(int i = strlen(root->name); i < 24; i++)
+            printf("-");
+		printf(" R$%3.2f", root->price);
 		printSorted(root->right);
 	}
 }

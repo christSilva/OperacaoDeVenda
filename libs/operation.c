@@ -19,13 +19,16 @@ void newOp(Tree* root){
     char opt;
     char pageMove = 'l';
 
+    //transferindo os dados armazenados na arvore para uma lista
+    //por esta ser mais facil de manipular
     for(i = 1; i <= biggest(root); i++){
         if(findKey(root, i) == 1)
             guide = insertListNode(guide, i, getName(root, i), getPrice(root, i), 0);
     }
+    
     alfaSort(guide);
+    
     do{
-        getc(stdin);
         system("clear");
         page = printByPages(guide, page, pageMove);
         printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
@@ -33,7 +36,7 @@ void newOp(Tree* root){
         printf("\n\n\n[A] INSERIR PRODUTO");
         printf("\n[D] EXCLUIR PRODUTO");
         printf("\n[F] FINALIZAR OPERACAO");
-        printf("\n[O] OCULTAR/MOSTRAR GUIA\n");
+        printf("\n[O] OCULTAR/MOSTRAR CATALOGO\n");
 
         opt = getchar();
         charUpperCase(&opt);
@@ -70,14 +73,13 @@ void newOp(Tree* root){
             }
             case 'F':{
                 if(products){
-                    //system("clear");
+                    system("clear");
                     printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
                     printList(products);
                     printf("\n__________________________________________________________");
                     printf("\n\nTOTAL A PAGAR                                    R$%.2f\n", totalToPay(products));
-                    printf("\n\nPRESSIONE QUALQUER TECLA PARA CONTINUAR...");
+                    printf("\n\nPRESSIONE ENTER PARA CONTINUAR...");
                     getc(stdin);
-                    getchar();
                 }
                 break;
             }

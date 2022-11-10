@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <ncurses.h>
 #include "libs//tree.h"
 #include "libs//options.h"
 #include "libs//operation.h"
