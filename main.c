@@ -39,7 +39,7 @@ int main(){
 			    break;
 			}
             default:{
-                printf("\n\nMAIN==OPCAO INVALIDA\n\n");
+                printf("\n\nOPCAO INVALIDA\n\n");
 				sleep(2);			
 				break;
 			}
