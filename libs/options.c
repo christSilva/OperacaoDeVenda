@@ -9,7 +9,7 @@ Tree* options(Tree* root){
 	int key;
 
 	do{
-		system("clear");
+		system("cls");
 		printf("OPCOES\n\n");
 		printf("[1] INSERIR PRODUTO\n");
 		printf("[2] EXCLUIR PRODUTO\n");
@@ -17,16 +17,16 @@ Tree* options(Tree* root){
 		printf("[0] VOLTAR\n");
 		printf("\n\n\n\n\n\n[4] OPCOES PARA DESENVOLVEDORES\n");
 		
-		opt = getchar();
+		opt = getch();
 
 		switch(opt){
 			case '1':{
-				getc(stdin);
-				system("clear");
+				fflush(stdin);
+				system("cls");
 				printf("INSERIR PRODUTO");
 				printf("\n\nDIGITE [0] PARA CANCELAR OU [1] PARA CONTINUAR");
 				scanf("%i", &key);
-				getc(stdin);
+				fflush(stdin);
 
 				if(key == 0)
 					break;
@@ -42,14 +42,14 @@ Tree* options(Tree* root){
 				}
 			}
 			case '2':{
-				getc(stdin);
-				system("clear");
+				fflush(stdin);
+				system("cls");
 				printf("EXCLUIR PRODUTO");
 				printf("\n\nCOD   NOME                     KG/UN\n");
 				printSorted(root);
 				printf("\n\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
-				getc(stdin);
+				fflush(stdin);
 
 				if(key == 0)
 					break;
@@ -60,14 +60,14 @@ Tree* options(Tree* root){
 				}
 			}
 			case '3':{
-				getc(stdin);
-				system("clear");
+				fflush(stdin);
+				system("cls");
 				printf("EDITAR PRODUTO");
 				printf("\n\nCOD   NOME                     KG/UN\n");
 				printSorted(root);
 				printf("\n\nINFORME O CODIGO DO PRODUTO OU DIGITE [0] PARA CANCELAR ");
 				scanf("%i", &key);
-				getc(stdin);
+				fflush(stdin);
 
 				if(key == 0)
 					break;
@@ -78,7 +78,7 @@ Tree* options(Tree* root){
 				}
 			}
 			case '4':{
-				system("clear");
+				system("cls");
 				devOptions(root);
 				break;
 			}
@@ -91,7 +91,7 @@ Tree* options(Tree* root){
 			}
 		}
 		if(opt != '0')
-			getc(stdin);
+			fflush(stdin);
 			
 	}while(opt != '0');
 return root;
@@ -103,9 +103,11 @@ void save(Tree* root){
 		saveData(root, file);
 		fprintf(file, "-1");
 		printf("OPERACAO REALIZADA COM SUCESSO!");
+		sleep(2);	
 	}
 	else{
 		printf("\nERRO AO SALVAR ARQUIVO");
+		sleep(2);	
 	}
 	fclose(file);
 }
@@ -123,6 +125,6 @@ void devOptions(Tree* root){
 	printf("como os elementos da parte inferior sao os menores\n");
 	printf("\n\nPRESSIONE ENTER PARA VOLTAR AO MENU ANTERIOR...");
 
-	getc(stdin);
+	getchar();
 }
 

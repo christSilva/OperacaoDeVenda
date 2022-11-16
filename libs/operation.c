@@ -29,7 +29,7 @@ void newOp(Tree* root){
     alfaSort(guide);
     
     do{
-        system("clear");
+        system("cls");
         page = printByPages(guide, page, pageMove);
         printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
         printList(products);
@@ -38,18 +38,18 @@ void newOp(Tree* root){
         printf("\n[F] FINALIZAR OPERACAO");
         printf("\n[O] OCULTAR/MOSTRAR CATALOGO\n");
 
-        opt = getchar();
+        opt = getch();
         charUpperCase(&opt);
 
         switch(opt){
             case 'A':{
                 printf("\nCOD.: ");
                 scanf("%i", &key);
-                getc(stdin);
+                fflush(stdin);
                 if(findKey(root, key) == 1){
                     printf("\nKG/UN (UTILIZE '.' PARA A PARTE DECIMAL): ");
                     scanf("%f", &qtt);
-                    getc(stdin);
+                    fflush(stdin);
                     products = insertListNode(products, key, getName(root, key), getPrice(root, key), qtt);
                 }else{
                     printf("\nCODIGO INVALIDO\n");
@@ -61,7 +61,7 @@ void newOp(Tree* root){
                 if(products){
                     printf("\nCODIGO DO PRODUTO: ");
                     scanf("%i", &key);
-                    getc(stdin);
+                    fflush(stdin);
                     
                     if(findKey(root, key) == 1)
                         products = deleteListNode(products, key);
@@ -73,13 +73,13 @@ void newOp(Tree* root){
             }
             case 'F':{
                 if(products){
-                    system("clear");
+                    system("cls");
                     printf("\n\nCOD.  NOME                     KG/UN     QTD     TOTAL\n");
                     printList(products);
                     printf("\n__________________________________________________________");
                     printf("\n\nTOTAL A PAGAR                                    R$%.2f\n", totalToPay(products));
                     printf("\n\nPRESSIONE ENTER PARA CONTINUAR...");
-                    getc(stdin);
+                    getchar();
                 }
                 break;
             }
