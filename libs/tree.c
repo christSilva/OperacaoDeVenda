@@ -73,7 +73,7 @@ Tree* editTree(Tree* root, int key){
 					break;
 				}
 				case '2':{
-					printf("\nDIGITE O NOVO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
+					printf("\nDIGITE O NOVO PRECO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
 					scanf("%f", &root->price);
 					break;
 				}
@@ -81,7 +81,7 @@ Tree* editTree(Tree* root, int key){
 					printf("\nDIGITE O NOVO NOME: ");
 					scanf("%24[^\n]", root->name);
 					upperCase(root->name);
-					printf("\nDIGITE O NOVO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
+					printf("\nDIGITE O NOVO PRECO POR KG/UN (UTILIZE '.' PARA A PARTE DECIMAL): R$ ");
 					scanf("%f", &root->price);
 					break;
 				}
@@ -246,10 +246,12 @@ void printTree(Tree* root, int tabs){
 }
 void printSorted(Tree* root){
 	if(root){
+		int i;
+		
 		printSorted(root->left);
 		//printf("[%2i] %s\n", root->key, root->name);
 		printf("\n%.4i  %s", root->key, root->name);
-		for(int i = strlen(root->name); i < 24; i++)
+		for(i = strlen(root->name); i < 24; i++)
             printf("-");
 		printf(" R$%3.2f", root->price);
 		printSorted(root->right);

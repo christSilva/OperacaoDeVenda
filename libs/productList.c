@@ -100,7 +100,7 @@ int printByPages(List* list, int page, char side){
             }
         }
         printf("\n");
-        for(i = 0; i < 37; i++)
+        for(i = 0; i < 54; i++)
             printf("_");
 
         return page;
